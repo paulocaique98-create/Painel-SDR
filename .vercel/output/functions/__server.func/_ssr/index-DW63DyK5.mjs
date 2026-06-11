@@ -1,6 +1,6 @@
 import { r as reactExports, j as jsxRuntimeExports } from "../_libs/react.mjs";
 import { u as useNavigate } from "../_libs/tanstack__react-router.mjs";
-import { s as supabase } from "./supabase-D6Dp6MLm.mjs";
+import { s as supabase } from "./supabase-C4BXROUh.mjs";
 import "../_libs/tanstack__router-core.mjs";
 import "../_libs/cookie-es.mjs";
 import "../_libs/tanstack__history.mjs";
@@ -28,13 +28,24 @@ function Index() {
   const [loading, setLoading] = reactExports.useState(true);
   reactExports.useEffect(() => {
     const checkAuth = async () => {
+      if (!supabase) {
+        navigate({
+          to: "/login",
+          replace: true
+        });
+        setLoading(false);
+        return;
+      }
       const {
         data: {
           session
         }
       } = await supabase.auth.getSession();
       if (session) {
-        window.location.replace("/dashboard.html");
+        navigate({
+          to: "/configuracoes",
+          replace: true
+        });
       } else {
         navigate({
           to: "/login",

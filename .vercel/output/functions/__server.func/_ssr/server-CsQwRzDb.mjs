@@ -35,10 +35,7 @@ var createServerRpc = (serverFnMeta, splitImportFn) => {
     [TSS_SERVER_FUNCTION]: true
   });
 };
-const fetch = createStartHandler(defaultStreamHandler);
-const server = {
-  fetch
-};
+const server = createStartHandler(defaultStreamHandler);
 const createNewUserAction_createServerFn_handler = createServerRpc({
   id: "eea8802047078d2d3842d233deba1e3fb2d588531fe9179fa2fd2c6b215959a1",
   name: "createNewUserAction",

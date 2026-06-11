@@ -811,7 +811,7 @@ function RootLayout() {
     /* @__PURE__ */ jsxRuntimeExports.jsx("main", { className: "flex-1 overflow-auto bg-slate-950", children: /* @__PURE__ */ jsxRuntimeExports.jsx(Outlet, {}) })
   ] }) });
 }
-const $$splitComponentImporter$2 = () => import("./login-XyHtxpSC.mjs");
+const $$splitComponentImporter$2 = () => import("./login-WRQunENA.mjs");
 const Route$2 = createFileRoute("/login")({
   head: () => ({
     meta: [{
@@ -824,7 +824,7 @@ const $$splitComponentImporter$1 = () => import("./configuracoes-DZzn1Qc7.mjs");
 const Route$1 = createFileRoute("/configuracoes")({
   component: lazyRouteComponent($$splitComponentImporter$1, "component")
 });
-const $$splitComponentImporter = () => import("./index-DhAYRTVY.mjs");
+const $$splitComponentImporter = () => import("./index-DW63DyK5.mjs");
 const Route = createFileRoute("/")({
   head: () => ({
     meta: [{

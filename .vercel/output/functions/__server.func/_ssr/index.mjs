@@ -20,7 +20,7 @@ import "../_libs/isbot.mjs";
 const manifest = {
   "eea8802047078d2d3842d233deba1e3fb2d588531fe9179fa2fd2c6b215959a1": {
     functionName: "createNewUserAction_createServerFn_handler",
-    importer: () => import("./server-BeVlH5Bz.mjs")
+    importer: () => import("./server-CsQwRzDb.mjs")
   }
 };
 async function getServerFnById(id, access) {
@@ -265,11 +265,11 @@ function serverFnBaseToMiddleware(options) {
     "~types": void 0,
     options: {
       inputValidator: options.validator ?? options.inputValidator,
-      client: async ({ next, sendContext, fetch: fetch2, ...ctx }) => {
+      client: async ({ next, sendContext, fetch, ...ctx }) => {
         const payload = {
           ...ctx,
           context: sendContext,
-          fetch: fetch2
+          fetch
         };
         return next(await options.extractedFn?.(payload));
       },
@@ -444,7 +444,7 @@ function getResponse() {
 }
 var HEADERS = { TSS_SHELL: "X-TSS_SHELL" };
 async function getStartManifest(matchedRoutes) {
-  const { tsrStartManifest } = await import("../_tanstack-start-manifest_v-B8jcyvZ6.mjs");
+  const { tsrStartManifest } = await import("../_tanstack-start-manifest_v-DMQAARo1.mjs");
   const startManifest = tsrStartManifest();
   let routes = startManifest.routes;
   routes[rootRouteId];
@@ -1355,7 +1355,7 @@ var getBaseManifest = getProdBaseManifest;
 var createEarlyHintsForRequest = createEarlyHintsCollector;
 async function loadEntries() {
   const [routerEntry, startEntry, pluginAdapters] = await Promise.all([
-    import("./router-CACGRJdZ.mjs").then((n) => n.r),
+    import("./router-Cyl2R0iJ.mjs").then((n) => n.r),
     import("./start-5EK2Rz99.mjs"),
     import("./empty-plugin-adapters-BFgPZ6_d.mjs")
   ]);
@@ -1689,10 +1689,7 @@ async function handleServerRoutes({ getRouter, request, url, executeRouter, cont
   }
   return normalizeSsrResponse(response);
 }
-const fetch = createStartHandler(defaultStreamHandler);
-const server = {
-  fetch
-};
+const server = createStartHandler(defaultStreamHandler);
 const createNewUserAction = createServerFn({
   method: "POST"
 }).validator((data) => data).handler(createSsrRpc("eea8802047078d2d3842d233deba1e3fb2d588531fe9179fa2fd2c6b215959a1"));

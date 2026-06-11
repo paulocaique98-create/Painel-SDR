@@ -1,7 +1,7 @@
 import { r as reactExports, j as jsxRuntimeExports } from "../_libs/react.mjs";
 import { u as useNavigate } from "../_libs/tanstack__react-router.mjs";
-import { s as supabase } from "./supabase-D6Dp6MLm.mjs";
-import { I as Input, B as Button, c as cn } from "./router-CACGRJdZ.mjs";
+import { s as supabase } from "./supabase-C4BXROUh.mjs";
+import { I as Input, B as Button, c as cn } from "./router-Cyl2R0iJ.mjs";
 import { R as Root } from "../_libs/radix-ui__react-label.mjs";
 import { c as cva } from "../_libs/class-variance-authority.mjs";
 import { t as toast } from "../_libs/sonner.mjs";
@@ -116,6 +116,10 @@ function Login() {
     e.preventDefault();
     setLoading(true);
     try {
+      if (!supabase) {
+        toast.error("Configure VITE_SUPABASE_URL e VITE_SUPABASE_ANON_KEY para habilitar o login.");
+        return;
+      }
       await supabase.auth.signOut();
       localStorage.clear();
       sessionStorage.clear();
@@ -128,7 +132,8 @@ function Login() {
       if (error) throw error;
       toast.success("Login realizado com sucesso!");
       navigate({
-        to: "/dashboard"
+        to: "/configuracoes",
+        replace: true
       });
     } catch (error) {
       toast.error(error.message || "Erro de autenticação.");

@@ -18,11 +18,17 @@ function Index() {
 
   useEffect(() => {
     const checkAuth = async () => {
+      if (!supabase) {
+        navigate({ to: "/login", replace: true });
+        setLoading(false);
+        return;
+      }
+
       const { data: { session } } = await supabase.auth.getSession();
       
       if (session) {
-        // Usuário logado, vai para o dashboard
-        window.location.replace("/dashboard.html");
+        // Usuário logado, vai para a página de configurações
+        navigate({ to: "/configuracoes", replace: true });
       } else {
         // Não logado, vai para a tela de login React
         navigate({ to: "/login", replace: true });

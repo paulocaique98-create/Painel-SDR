@@ -25,6 +25,11 @@ function Login() {
     setLoading(true);
 
     try {
+      if (!supabase) {
+        toast.error("Configure VITE_SUPABASE_URL e VITE_SUPABASE_ANON_KEY para habilitar o login.");
+        return;
+      }
+
       // 1. Limpa qualquer sessão ativa antes de tentar entrar
       await supabase.auth.signOut();
       localStorage.clear();
@@ -38,9 +43,9 @@ function Login() {
       if (error) throw error;
 
       toast.success("Login realizado com sucesso!");
-      
-      // Redireciona para o dashboard usando o Router do TanStack
-      navigate({ to: "/dashboard" });
+
+      // Redireciona para a página principal do painel
+      navigate({ to: "/configuracoes", replace: true });
       
     } catch (error: any) {
       toast.error(error.message || "Erro de autenticação.");
