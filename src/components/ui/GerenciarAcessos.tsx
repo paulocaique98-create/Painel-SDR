@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { createNewUserAction } from "../../server/auth-actions"; // Ajuste se necessário para subir até a pasta src
+import { createNewUserAction } from "../../server";
 import { Button } from "./button";
 import { Input } from "./input";
 import { Label } from "./label";

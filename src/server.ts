@@ -1,5 +1,10 @@
 import { createServerFn } from "@tanstack/react-start";
+import { createStartHandler, defaultStreamHandler } from "@tanstack/react-start/server";
 import { createClient } from "@supabase/supabase-js";
+
+const fetch = createStartHandler(defaultStreamHandler);
+
+export default { fetch };
 
 interface CreateUserParams {
   email: string;
